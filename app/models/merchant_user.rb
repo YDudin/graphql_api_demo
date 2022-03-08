@@ -1,0 +1,1 @@
+class MerchantUser < User; end

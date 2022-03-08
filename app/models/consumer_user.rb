@@ -1,0 +1,1 @@
+class ConsumerUser < User; end
