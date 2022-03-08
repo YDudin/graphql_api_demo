@@ -34,8 +34,8 @@ roles      = %w[basic verified]
     user.transactions.create!(
       unique_id: SecureRandom.uuid,
       amount:    Faker::Number.number(digits: 4),
-      currency:  %w[EUR USD BGN],
-      status:    %i[approved approved decline].sample
+      currency:  %w[EUR USD BGN].sample,
+      status:    %i[approved approved declined].sample
     )
   end
 end
