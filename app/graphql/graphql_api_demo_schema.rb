@@ -18,7 +18,10 @@ class GraphqlApiDemoSchema < GraphQL::Schema
   def self.resolve_type(abstract_type, obj, ctx)
     # TODO: Implement this method
     # to return the correct GraphQL object type for `obj`
-    raise(GraphQL::RequiredImplementationMissingError)
+    return Types::AdminUserType    if obj.is_a?(AdminUser)
+    return Types::ConsumerUserType if obj.is_a?(ConsumerUser)
+    return Types::MerchantUserType if obj.is_a?(MerchantUser)
+    # raise(GraphQL::RequiredImplementationMissingError)
   end
 
   # Relay-style Object Identification:
