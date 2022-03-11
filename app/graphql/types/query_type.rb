@@ -1,9 +1,5 @@
 module Types
   class QueryType < Types::BaseObject
-    # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
-    include GraphQL::Types::Relay::HasNodeField
-    include GraphQL::Types::Relay::HasNodesField
-
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
@@ -13,7 +9,7 @@ module Types
       User.all
     end
 
-    field :users, [UserInterface], null: false, description: 'Show all users details' do
+    field :users, [UserInterface], null: true, description: 'Show all users details' do
       argument :first_name, String,
                required:    false,
                description: 'Filter records by user first name'
@@ -26,28 +22,28 @@ module Types
       User.where(filters)
     end
 
-    field :admin_users, [AdminUserType], null: false, description: 'Show all admin users details'
+    field :admin_users, [AdminUserType], null: true, description: 'Show all admin users details'
     def admin_users
       AdminUser.all
     end
 
-    field :consumer_users, [ConsumerUserType], null: false, description: 'Show all consumer users details'
+    field :consumer_users, [ConsumerUserType], null: true, description: 'Show all consumer users details'
     def consumer_users
       ConsumerUser.all
     end
 
-    field :merchant_users, [MerchantUserType], null: false, description: 'Show all merchant users details'
+    field :merchant_users, [MerchantUserType], null: true, description: 'Show all merchant users details'
     def merchant_users
       MerchantUser.all
     end
 
-    field :union_users, [UserUnion], null: false, description: 'Show all users via union'
+    field :union_users, [UserUnion], null: true, description: 'Show all users via union'
     def union_users
       User.all
     end
 
     # Transaction related queries
-    field :transactions, [TransactionType], null: false, description: 'Show all transactions basic details'
+    field :transactions, [TransactionType], null: true, description: 'Show all transactions basic details'
     def transactions
       Transaction.all
     end

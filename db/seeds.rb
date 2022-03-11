@@ -30,7 +30,7 @@ roles      = %w[basic verified]
 
   user = user_type.create!(base_attr.merge(special_attrs))
 
-  10.times do
+  rand(3..20).times do
     user.transactions.create!(
       unique_id: SecureRandom.uuid,
       amount:    Faker::Number.number(digits: 4),
